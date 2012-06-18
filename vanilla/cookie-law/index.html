@@ -6,8 +6,29 @@
     timesShown specifies the number of page loads before cookie is no longer incremented (and popup does not show)
     modify showCookiePopup & hideCookiePopup if you want smooth animations (css3 classes)
 -->
+<style type="text/css">
+    #cookiePopup {
+        background:#000;
+        color:#fff;
+        line-height:40px;
+        font-size:12px;
+        font-weight:bold;
+    }
+    #cookiePopup a {
+        float:right;
+        color:#ccc;
+        margin-left:20px;
+    }
+    #cookiePopup a.close {
+        font-size:20px;
+        text-decoration:none;
+    }
+</style>
 <div id="cookiePopup" style="display:none;">
-    This site uses cookies. By continuing to browse the site you are agreeing to our use of cookies.
-    <a href="#" onclick="hideCookiePopup()">I agree</a>
+    <div class="container">
+        This site uses cookies. By continuing to browse the site you are agreeing to our use of cookies.
+        <a class="close" href="#" onclick="hideCookiePopup()">&times;</a>
+        <a href="/privacy-policy">More Information</a>
+    </div>
 </div>
 <script type="text/javascript" src="cookielaw.js"></script>
