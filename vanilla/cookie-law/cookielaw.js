@@ -1,6 +1,7 @@
 var timesShown = 4;
 var cookieLaw = getCookie('cookielaw');
-if (cookieLaw < timesShown){
+var cookieLawSeen = getCookie('cookielawseen')
+if (cookieLaw < timesShown && !cookieLawSeen){
     showCookiePopup();
     setCookie('cookielaw', ++cookieLaw);
 }
@@ -32,4 +33,5 @@ function showCookiePopup(){
 }
 function hideCookiePopup(){
     document.getElementById('cookiePopup').style.display = 'none';
+    setCookie('cookielawseen', true);
 }
