@@ -44,7 +44,7 @@ function cookiePopup(){
         popup.id = 'cookie-popup';
         popup.innerHTML = wording;
         
-        popup.style.position = 'absolute';
+        popup.style.position = 'fixed';
         for(var i=0; i<position.length; i++){
             popup.style[position[i]] = '1em';
         }
