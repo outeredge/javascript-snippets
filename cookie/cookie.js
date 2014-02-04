@@ -5,7 +5,10 @@ var until = 5,
     wording = "This site uses cookies, by continuing to browse the site you are agreeing to allow the use of cookies.",
     position = ['bottom', 'right'],
     bg = '#333',
-    color = '#FFF';
+    color = '#FFF',
+    policyLink = '/cookie-policy',
+    policyTitle = 'Cookie Policy',
+    closeLink = true;
     
 if (times < until && !seen){
     cookiePopup();
@@ -52,6 +55,27 @@ function cookiePopup(){
         popup.style.backgroundColor = bg;
         popup.style.color = color;
         popup.style.padding = '.5em 1em';
+        
+        if(policyLink){
+            var link = document.createElement('a');
+            link.style.clear = 'both';
+            link.style.display = 'inline-block';
+            link.href = policyLink;
+            link.innerHTML = policyTitle;
+            popup.appendChild(document.createElement('br'));
+            popup.appendChild(link);
+        }
+        
+        if(closeLink){
+            var close = document.createElement('a');
+            close.style.clear = 'both';
+            close.style.display = 'inline-block';
+            close.href = '#';
+            close.onclick = hideCookiePopup;
+            close.innerHTML = 'Close';
+            popup.appendChild(document.createElement('br'));
+            popup.appendChild(close);
+        }
         
         document.body.appendChild(popup);
     }
