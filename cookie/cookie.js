@@ -59,8 +59,8 @@ function cookiePopup(){
         if(policyLink){
             var link = document.createElement('a');
             link.href = policyLink;
+            link.setAttribute('class', 'cookie-link');
             link.innerHTML = policyTitle;
-            link.className('cookie-link');
             popup.appendChild(document.createElement('br'));
             popup.appendChild(link);
         }
@@ -69,8 +69,8 @@ function cookiePopup(){
             var close = document.createElement('a');
             close.href = '#';
             close.onclick = hideCookiePopup;
+            close.setAttribute('class', 'cookie-close');
             close.innerHTML = 'Close';
-            close.className('cookie-close');
             popup.appendChild(document.createElement('br'));
             popup.appendChild(close);
         }
