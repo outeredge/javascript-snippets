@@ -60,6 +60,7 @@ function cookiePopup(){
             var link = document.createElement('a');
             link.href = policyLink;
             link.innerHTML = policyTitle;
+            link.className('cookie-link');
             popup.appendChild(document.createElement('br'));
             popup.appendChild(link);
         }
@@ -69,6 +70,7 @@ function cookiePopup(){
             close.href = '#';
             close.onclick = hideCookiePopup;
             close.innerHTML = 'Close';
+            close.className('cookie-close');
             popup.appendChild(document.createElement('br'));
             popup.appendChild(close);
         }
