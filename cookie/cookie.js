@@ -58,8 +58,6 @@ function cookiePopup(){
         
         if(policyLink){
             var link = document.createElement('a');
-            link.style.clear = 'both';
-            link.style.display = 'inline-block';
             link.href = policyLink;
             link.innerHTML = policyTitle;
             popup.appendChild(document.createElement('br'));
@@ -68,8 +66,6 @@ function cookiePopup(){
         
         if(closeLink){
             var close = document.createElement('a');
-            close.style.clear = 'both';
-            close.style.display = 'inline-block';
             close.href = '#';
             close.onclick = hideCookiePopup;
             close.innerHTML = 'Close';
@@ -86,5 +82,6 @@ function cookiePopup(){
         }, visibleSeconds * 1000);
 }
 function hideCookiePopup(){
+    document.getElementById('cookie-popup').style.display = 'none';
     setCookie('cookielawseen', true);
 }
