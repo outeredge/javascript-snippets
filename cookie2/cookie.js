@@ -41,18 +41,21 @@ function showCookieNotice(){
     
     notice.setAttribute('class', 'cookie-popup');
     
+    var row = document.createElement('div');
+    row.setAttribute('class', 'cookie-popup-row');
+    
     var text = document.createElement('p');
     text.innerHTML = wording;
     text.style.float = 'left';
     text.style.margin = '0';
-    notice.appendChild(text);
+    row.appendChild(text);
     
     var close = document.createElement('a');
     close.innerHTML = 'Close';
     close.style.float = 'right';
     close.style.cursor = 'pointer';
     close.onclick = hideCookieNotice;
-    notice.appendChild(close);
+    row.appendChild(close);
     
     var styles = {
         WebkitTransition: '.5s',
@@ -69,6 +72,7 @@ function showCookieNotice(){
         notice.style[k] = styles[k];
     }
     
+    notice.appendChild(row);
     document.body.appendChild(notice);
     document.body.setAttribute('class', document.body.className + ' has-cookie-popup');
     
@@ -81,5 +85,6 @@ function showCookieNotice(){
 function hideCookieNotice(){
     notice.style.height = '0px';
     notice.style.padding = '0 1em';
+    document.body.setAttribute('class', document.body.className.replace('has-cookie-popup', ''));
     setCookie('cookielawseen', true);
 }
