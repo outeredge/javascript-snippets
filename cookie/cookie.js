@@ -8,7 +8,9 @@ var until = 5,
     color = '#FFF',
     policyLink = '/cookie-policy',
     policyTitle = 'Cookie Policy',
-    closeLink = true;
+    closeLink = true,
+    popup = document.getElementById('cookie-popup'),
+    usesCustom = document.getElementById('cookie-popup');
     
 if (times < until && !seen){
     cookiePopup();
@@ -38,9 +40,13 @@ function setCookie(cName, cValue){
     document.cookie = cookieParams.join(';');
 }
 function cookiePopup(){
-    var popup = document.getElementById('cookie-popup');
-    if(popup){
-        popup.className('visible');
+    if(usesCustom){
+        visibleSeconds = popup.getAttribute('data-visible-seconds') || 10;
+        popup.setAttribute('class', popup.className + ' visible');
+        
+        var close = document.getElementById('cookie-close');
+        if(close)
+            close.onclick = hideCookiePopup;
     }
     else{
         popup = document.createElement('p');
@@ -80,10 +86,16 @@ function cookiePopup(){
     
     if(visibleSeconds > 0)
         setTimeout(function(){
-            document.getElementById('cookie-popup').style.display = 'none';
+            if(usesCustom)
+                popup.setAttribute('class', popup.className.replace('visible', ''));
+            else
+                document.getElementById('cookie-popup').style.display = 'none';
         }, visibleSeconds * 1000);
 }
 function hideCookiePopup(){
-    document.getElementById('cookie-popup').style.display = 'none';
+    if(usesCustom)
+        popup.setAttribute('class', popup.className.replace('visible', ''));
+    else
+        document.getElementById('cookie-popup').style.display = 'none';
     setCookie('cookielawseen', true);
 }
