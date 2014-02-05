@@ -70,6 +70,7 @@ function showCookieNotice(){
     }
     
     document.body.appendChild(notice);
+    document.body.setAttribute('class', document.body.className + ' has-cookie-popup');
     
     setTimeout(function(){
         notice.style.height = 'auto';
